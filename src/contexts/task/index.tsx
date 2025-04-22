@@ -5,7 +5,7 @@ import { reducerTask } from "./reducer";
 
 type TaskContextType = {
   tasks: Task[];
-  addTask: (task: Omit<Task, "id" | "done">) => void;
+  addTask: (task: Omit<Task, "id" | "done" | "createdAt">) => void;
   delTask: (id: number) => void;
 };
 
@@ -24,7 +24,7 @@ type Props = {
 export function TaskProvider({ children }: Props) {
   const [tasks, dispatch] = useReducer(reducerTask, []);
 
-  function addTask(payload: Omit<Task, "id" | "done">) {
+  function addTask(payload: Omit<Task, "id" | "done" | "createdAt">) {
     dispatch({ type: "addTask", payload });
   }
 

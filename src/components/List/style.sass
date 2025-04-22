@@ -6,8 +6,42 @@ ul
   flex-direction: column
   
 li 
-  padding: 10px
+  position: relative
+  padding: 5px
   border-radius: 5px
-  box-shadow: 2px 2px 2px #012030
-  color: #fff
-  background-color:  #13678A
+  box-shadow: 1px 1px 2px #00000044
+  display: flex
+  flex-direction: column
+  gap: 5px
+
+  .createdAt 
+    font-size: 11px
+    font-weight: 600
+
+  .content
+    width: 100%
+    display: flex
+    justify-content: space-between
+    gap: 5px
+ 
+  h3
+    font-size: 16px
+    font-weight: normal
+  
+  .icon
+    width: 32px
+    height: 32px
+    display: flex
+    justify-content: center
+    align-items: center
+  .menu 
+    position: absolute  
+
+.buttons
+    position: absolute
+    padding: 5px
+    gap: 10px
+    border: 1px solid #00000036
+    border-radius: 5px
+    display: flex  
+    background: #fff

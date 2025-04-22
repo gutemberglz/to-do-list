@@ -3,4 +3,5 @@ export type Task = {
   done: boolean;
   title: string;
   description?: string;
+  createdAt: Date;
 };
