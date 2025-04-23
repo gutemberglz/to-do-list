@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useContext, useReducer } from "react";
+import { createContext, ReactNode, useContext, useReducer } from 'react';
 
-import { Task } from "../../types/Task";
-import { reducerTask } from "./reducer";
+import { Task } from '../../types/Task';
+import { reducerTask } from './reducer';
 
 type TaskContextType = {
   tasks: Task[];
@@ -24,7 +24,9 @@ type Props = {
 };
 
 export function TaskProvider({ children }: Props) {
-  const [tasks, dispatch] = useReducer(reducerTask, []);
+  const [tasks, dispatch] = useReducer(reducerTask, [
+    { id: 1, done: false, title: "ok", createdAt: new Date("2025-04-23") },
+  ]);
 
   function addTask(payload: Omit<Task, "id" | "done" | "createdAt">) {
     dispatch({ type: "addTask", payload });
