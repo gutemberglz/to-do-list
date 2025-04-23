@@ -119,7 +119,7 @@ function Li({ task, setIdPopover, toggleDoneTask, deleteTask }: Props) {
     }
   }
 
-  function handleDeleteTask(e: MouseEvent) {
+  function handleDeleteTask() {
     deleteTask(task.id);
   }
 
