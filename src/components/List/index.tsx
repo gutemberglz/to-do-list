@@ -1,6 +1,7 @@
 import './style.sass';
 
 import { MouseEvent, TouchEvent, useEffect, useRef, useState } from 'react';
+import { MdDeleteOutline } from 'react-icons/md';
 
 import { useTaskCtx } from '../../contexts/task';
 import { formatDate } from '../../helpers/formatDate';
@@ -204,6 +205,9 @@ function Li({ task, lastTask, toggleDoneTask, deleteTask }: Props) {
         <div className="content">
           <div>
             <h3>{task.title}</h3>
+          </div>
+          <div className="icon" onClick={handleDeleteTask}>
+            <MdDeleteOutline fontSize={28} />
           </div>
         </div>
       </div>
