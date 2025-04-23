@@ -7,12 +7,14 @@ type TaskContextType = {
   tasks: Task[];
   addTask: (task: Omit<Task, "id" | "done" | "createdAt">) => void;
   delTask: (id: number) => void;
+  toggleDoneTask: (id: number) => void;
 };
 
 const initCtx: TaskContextType = {
   tasks: [],
   addTask: () => null,
   delTask: () => null,
+  toggleDoneTask: () => null,
 };
 
 const TaskContext = createContext<TaskContextType>(initCtx);
@@ -32,8 +34,12 @@ export function TaskProvider({ children }: Props) {
     dispatch({ type: "delTask", payload: { id } });
   }
 
+  function toggleDoneTask(id: number) {
+    dispatch({ type: "toggleDoneTask", payload: { id } });
+  }
+
   return (
-    <TaskContext.Provider value={{ tasks, addTask, delTask }}>
+    <TaskContext.Provider value={{ tasks, addTask, delTask, toggleDoneTask }}>
       {children}
     </TaskContext.Provider>
   );

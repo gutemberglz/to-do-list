@@ -5,14 +5,20 @@ type AddTask = {
   payload: Omit<Task, "id" | "done" | "createdAt">;
 };
 
-type RemoveTask = {
+type DeleteTask = {
   type: "delTask";
   payload: {
     id: number;
   };
 };
+type ToggleDoneTask = {
+  type: "toggleDoneTask";
+  payload: {
+    id: number;
+  };
+};
 
-type ActionsTask = AddTask | RemoveTask;
+type ActionsTask = AddTask | DeleteTask | ToggleDoneTask;
 
 export function reducerTask(state: Task[], action: ActionsTask): Task[] {
   switch (action.type) {
@@ -26,6 +32,16 @@ export function reducerTask(state: Task[], action: ActionsTask): Task[] {
 
     case "delTask": {
       return state.filter((item) => item.id !== action.payload.id);
+    }
+
+    case "toggleDoneTask": {
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          item.done = !item.done;
+          return item;
+        }
+        return item;
+      });
     }
 
     default:
