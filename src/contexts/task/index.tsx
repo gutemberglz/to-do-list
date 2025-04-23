@@ -24,9 +24,7 @@ type Props = {
 };
 
 export function TaskProvider({ children }: Props) {
-  const [tasks, dispatch] = useReducer(reducerTask, [
-    { id: 1, done: false, title: "ok", createdAt: new Date("2025-04-23") },
-  ]);
+  const [tasks, dispatch] = useReducer(reducerTask, []);
 
   function addTask(payload: Omit<Task, "id" | "done" | "createdAt">) {
     dispatch({ type: "addTask", payload });
